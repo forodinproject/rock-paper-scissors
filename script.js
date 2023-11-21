@@ -37,6 +37,10 @@ function game() {
     let i = 0;
     do {
         playerSelection = prompt("Rock Paper Scissors?: ");
+        while (!isInputCorrect(playerSelection)) {
+            alert("Kindly enter correct input");
+            playerSelection = prompt("Rock Paper Scissors?: ");
+        }
         computerSelection = getComputerChoice();
         console.log(`playerSelection: ${playerSelection} and computerSelection: ${computerSelection}`);
         console.log(playRound(playerSelection, computerSelection));
@@ -45,5 +49,18 @@ function game() {
     while (i < 5);
 
 }
+
+function isInputCorrect(playerSelection) {
+    playerSelection = playerSelection.toLowerCase();
+    if (playerSelection =="rock"
+        || playerSelection =="paper"
+        || playerSelection =="scissors")
+        {
+            return true;
+        }
+        
+        return false; 
+}
+
 
 game();
