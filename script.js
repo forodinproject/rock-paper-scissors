@@ -1,11 +1,11 @@
 function getComputerChoice() {
     const choice = ["rock", "paper", "scissors"];
     let randomIndex = Math.floor(Math.random()*choice.length);
-    console.log(`computerSelection is ${choice[randomIndex]} `)
     return(choice[randomIndex]);
 }
 
 function playRound(playerSelection, computerSelection) {
+    playerSelection = playerSelection.toLowerCase();
     if (checkWinner(playerSelection, computerSelection) === "tie") {
         return "It is a Tie!";
     }
@@ -33,8 +33,17 @@ function checkWinner(playerSelection, computerSelection) {
     return "computer";
 }
 
+function game() {
+    let i = 0;
+    do {
+        playerSelection = prompt("Rock Paper Scissors?: ");
+        computerSelection = getComputerChoice();
+        console.log(`playerSelection: ${playerSelection} and computerSelection: ${computerSelection}`);
+        console.log(playRound(playerSelection, computerSelection));
+        i++;
+    }
+    while (i < 5);
 
-computerSelection = getComputerChoice();
-const playerSelection = "rock";
-console.log(`playerSelection is ${playerSelection}`)
-console.log(playRound(playerSelection, computerSelection));
+}
+
+game();
